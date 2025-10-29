@@ -20,7 +20,7 @@ async function getWeather(city) {
 
     try {
 
-        let response = await fetch(`https://api.weatherapi.com/v1/current.json?key=c4055e9be0ca4730a6c104454252910&q=${city}`)
+        let response = await fetch(`https://api.weatherapi.com/v1/forecast.json?key=c4055e9be0ca4730a6c104454252910&q=${city}&days=7`)
 
         let data = await response.json()
 
@@ -30,7 +30,9 @@ async function getWeather(city) {
 
         let cityName = data.location.name
 
-        displayData(allWeather, cityName)
+        let forecastDays = data.forecast.forecastday
+
+        displayData(allWeather, cityName, forecastDays)
 
     } catch (error) {
 
@@ -60,7 +62,7 @@ function getDateString(index) {
     return today.toLocaleDateString('en-US', options)
 
 }
-function displayData(arr, cityName) {
+function displayData(arr, cityName, forecastDays) {
 
     let cartona = "";
 
@@ -89,11 +91,11 @@ function displayData(arr, cityName) {
                         <div class="mb-4" style="height: 40px;"></div>
                         <div class="fs-1 mb-3">
                             <i>
-                            <img src="https:${arr[i].condition.icon}" alt="weather icon">
+                            <img src="https:${forecastDays[i].day.condition.icon}" alt="weather icon">
                             </i>
                         </div>
-                        <h2 class="display-4 text-white fw-light mb-2">${arr[i].temp_c}°C</h2>
-                        <p class="text-secondary fs-5 mb-3">${arr[i].condition.text}</p>
+                        <h2 class="display-4 text-white fw-light mb-2">${forecastDays[i].day.avgtemp_c}°C</h2>
+                        <p class="text-secondary fs-5 mb-3">${forecastDays[i].day.condition.text}</p>
                     </div>
                     <div class="col-lg-4 day-column text-center">
                         <p class="text-secondary mb-1">${getDayName(i)}</p>
@@ -101,11 +103,11 @@ function displayData(arr, cityName) {
                         <div class="mb-4" style="height: 40px;"></div>
                         <div class="fs-1 mb-3">
                             <i>
-                            <img src="https:${arr[i].condition.icon}" alt="weather icon">
+                            <img src="https:${forecastDays[i].day.condition.icon}" alt="weather icon">
                             </i>
                         </div>
-                        <h2 class="display-4 text-white fw-light mb-2">${arr[i].temp_c}°C</h2>
-                        <p class="text-secondary fs-5 mb-3">${arr[i].condition.text}</p>
+                        <h2 class="display-4 text-white fw-light mb-2">${forecastDays[i].day.avgtemp_c}°C</h2>
+                        <p class="text-secondary fs-5 mb-3">${forecastDays[i].day.condition.text}</p>
                     </div>`
 
 
