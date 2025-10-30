@@ -90,3 +90,23 @@ body {
   background: #2980b9;
   color: #fff;
 }
+.breadcrumb {
+    background: #262936 !important;
+    border-radius: 40px !important;
+    padding: 20px 30px !important;
+    font-size: 0.9285714286em !important;
+}
+.contact-us .form-control {
+    background: #1e212a !important;
+    border: 1px solid #444 !important;
+    color: #fff !important;
+    padding: 20px !important;
+    border-radius: 30px !important;
+}
+#contact{
+  background: #1e212a !important;
+}
+.contact-us p{
+  line-height: 21px!important;
+  margin: 0px 0px 14px!important;
+}
