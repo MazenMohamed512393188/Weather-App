@@ -89,7 +89,6 @@ function displayData(arr, cityName, forecastDays) {
                             </div>
                         </div>`;
         } else if (forecastDays[i] && forecastDays[i].day && forecastDays[i].day.condition) {
-            // For other days, use forecast data if available
             cartona += `<div class="col-lg-4 day-column text-center">
                             <p class="text-secondary mb-1">${getDayName(i)}</p>
                             <p class="text-muted small mb-5">${getDateString(i)}</p>
